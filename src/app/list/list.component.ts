@@ -3,7 +3,7 @@ import { identifierModuleUrl } from "../../../node_modules/@angular/compiler";
 declare var collapse: any;
 declare var openModalToView: any;
 declare var openModalToAdd: any;
-declare var loadRest: any;
+declare var showNewView: any;
 
 @Component({
   selector: "app-list",
@@ -12,7 +12,8 @@ declare var loadRest: any;
 })
 export class ListComponent implements OnInit {
   itemCount: number;
-  newItem:number;
+  newItem:number=0;
+  oldItem:number;
   plusImage: any = "assets/icons8-plus-math-30.png";
   caretImage: any = "assets/icons8-down-button-50.png";
   trashImage: any = "assets/icons8-trash-can-24.png";
@@ -62,6 +63,7 @@ export class ListComponent implements OnInit {
     console.log(this.today);
     //  app2;
     this.show=3;
+    // this.oldItem=this.infoObj.length;
   }
 
   myEvent(event) {
@@ -89,6 +91,8 @@ export class ListComponent implements OnInit {
       iInfo: this.iInfo,
       iMain: this.iMain
     });
+    this.newItem++;
+    showNewView(this.newItem);
     this.itemCount = this.infoObj.length;
   }
 

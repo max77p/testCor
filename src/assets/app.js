@@ -1,20 +1,20 @@
 collapse = function () {
   console.log("etete");
   var x = document.getElementsByClassName("itemMain");
-  var spanFoot=document.getElementsByClassName('load');
+  var spanFoot = document.getElementsByClassName('load');
   console.log(spanFoot[0]);
   console.log(x);
   if (x[0].style.display === "none") {
     x[0].style.display = "inline-block";
-    spanFoot[0].style.display="inline-block";
+    spanFoot[0].style.display = "inline-block";
   } else {
     x[0].style.display = "none";
-    spanFoot[0].style.display="none";
-    
+    spanFoot[0].style.display = "none";
+
   }
 }
 
-openModalToAdd=function(){
+openModalToAdd = function () {
   var modal = document.getElementById('addModal');
   modal.style.display = "block";
 
@@ -36,29 +36,29 @@ openModalToView = function (event, info) {
   modal.style.display = "block";
 
   var iImg, iName, iInfo, iMain;
-  iImg=document.getElementsByClassName('itemImg1');
-  iName=document.getElementsByClassName('nameData1');
-  iInfo=document.getElementsByClassName('mainData1');
-  iMain=document.getElementsByClassName('currDate1');
+  iImg = document.getElementsByClassName('itemImg1');
+  iName = document.getElementsByClassName('nameData1');
+  iInfo = document.getElementsByClassName('mainData1');
+  iMain = document.getElementsByClassName('currDate1');
 
   console.log(iImg);
   for (ele1 in info) {
     // console.log(info[ele1]);
     console.log(ele1);
- 
-    switch(ele1){
+
+    switch (ele1) {
       case 'infoImg':
-      iImg[0].innerHTML=`<img src=${info[ele1]}>`;
-      break;
+        iImg[0].innerHTML = `<img src=${info[ele1]}>`;
+        break;
       case 'iName':
-      iName[0].innerHTML=info[ele1];
-      break;
+        iName[0].innerHTML = info[ele1];
+        break;
       case 'iInfo':
-      iInfo[0].innerHTML=info[ele1];
-      break;
+        iInfo[0].innerHTML = info[ele1];
+        break;
       case 'iMain':
-      iMain[0].innerHTML=info[ele1];
-      break;
+        iMain[0].innerHTML = info[ele1];
+        break;
     }
   }
 
@@ -76,6 +76,16 @@ openModalToView = function (event, info) {
 }
 
 
+showNewView = function (elValue) {
+  var newItemSpan = document.getElementById('newItem');
+console.log(newItemSpan);
+console.log(elValue);
+  if (elValue > 0) {
+    newItemSpan.innerHTML = elValue;
+  }
+
+}
+
 
 
 // Using only HTML, create a template for the structure depicted in the mock-ups. -DONE
@@ -83,7 +93,7 @@ openModalToView = function (event, info) {
 // Create an Angular list component from your code and import it to the project. -DONE
 // Display system's current date in the format shown in the mock-ups. -DONE
 // Display the total number of items in the list header. -DONE
-// Display the total number of new items as red badge in the list header.--TODO
+// Display the total number of new items as red badge in the list header.--DONE
 // Display default image placeholder if item is missing icon.--DONE
 
 // Add collapse functionality to the list component. -DONE
