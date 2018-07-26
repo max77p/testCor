@@ -1,0 +1,87 @@
+<!-- <label>name</label>
+<input [(ngModel)]="newHero.name">
+<label >power</label>
+<input [(ngModel)]="newHero.name">
+
+<button (click)=addHero()>Add</button>
+
+<ul *ngFor="let hero of heroes">
+    <li>name:{{hero.name}}</li>
+    <li>power:{{hero.power}}</li>
+</ul> -->
+
+<div class="grid-container mainContainer">
+  <div class="headingSection">
+
+    <section class="left">
+      <p>List Name</p>
+      <p>Total {{itemCount}}</p>
+    </section>
+
+    <section class="right">
+      <div class="plus">
+        <i class="material-icons">add</i>
+      </div>
+      <div class="caret" (click)="myEvent($event)">
+        <i class="material-icons">arrow_drop_down</i>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- view modal -->
+  <div id="viewModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="itemImg1"></div>
+      <p class="nameData1"></p>
+      <p class="subData1"></p>
+      <p class="mainData1"></p>
+      <p class="currDate1"></p>
+      <span class="close">&times;</span>
+    </div>
+  </div>
+
+  <!-- new data modal -->
+  <div id="addModal" class="modal">
+    
+         
+        
+
+    <button type="submit">Submit</button>
+  </div>
+
+  <section class="itemMain">
+    <div class="itemSection" (click)="openModal($event,i)" *ngFor="let ele of infoObj; index as i" [attr.data-index]="i">
+
+
+      <div class="itemImg">
+        <img src= {{ele.infoImg}}>
+      </div>
+
+      <div class="itemData">
+
+        <p class="nameData">{{ele.iName}}</p>
+
+        <p class="subData">{{ele.iInfo}}</p>
+
+        <p class="mainData">{{ele.iMain}}</p>
+
+        <p class="currDate">
+          <i class="material-icons">event</i>
+          <span> {{today | date:"EEE MMM dd yyyy"}}</span>
+        </p>
+      </div>
+
+      <div class="trashArea delete" (click)="del($event,i)" [attr.data-index]="i">
+        <!-- <img src= {{trashImage}}> -->
+        <i class="material-icons">delete</i>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <a href="">Load More...</a>
+  </footer>
+</div>
