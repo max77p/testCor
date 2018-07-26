@@ -30,49 +30,50 @@
     </div>
   </div>
 
-  <!-- new data modal -->
+  <!-- add new data modal -->
   <div id="addModal" class="modal">
-    <form (click)="addToList($event)">
+    <form (submit)="addToList($event)">
       <input type="text" [(ngModel)]="infoImg" name="image">
       <input type="text" [(ngModel)]="iName" name="Name">
       <input type="text" [(ngModel)]="iInfo" name="Info">
       <input type="text" [(ngModel)]="iMain" name="Main">
-      <button type="submit" >Add contact</button>
+      <button type="submit">Add contact</button>
     </form>
     <span class="closeAdd">&times;</span>
   </div>
 
   <section class="itemMain">
-    <div class="itemSection" (click)="openModalView($event,i)" *ngFor="let ele of infoObj; index as i" [attr.data-index]="i">
+  <section class="itemInnerMain" *ngFor="let ele of infoObj; index as i">
+    <div class="itemSection" (click)="openModalView($event,i)"  [attr.data-index]="i" *ngIf="i<show">
 
+        <div class="itemImg">
+          <img src= {{ele.infoImg}} onerror="this.src='../assets/dummy.png'">
+        </div>
 
-      <div class="itemImg">
-        <img src= {{ele.infoImg}}>
-      </div>
+        <div class="itemData">
 
-      <div class="itemData">
+          <p class="nameData">{{ele.iName}}</p>
 
-        <p class="nameData">{{ele.iName}}</p>
+          <p class="subData">{{ele.iInfo}}</p>
 
-        <p class="subData">{{ele.iInfo}}</p>
+          <p class="mainData">{{ele.iMain}}</p>
 
-        <p class="mainData">{{ele.iMain}}</p>
+          <p class="currDate">
+            <i class="material-icons">event</i>
+            <span> {{today | date:"EEE MMM dd yyyy"}}</span>
+          </p>
+        </div>
 
-        <p class="currDate">
-          <i class="material-icons">event</i>
-          <span> {{today | date:"EEE MMM dd yyyy"}}</span>
-        </p>
-      </div>
-
-      <div class="trashArea delete" (click)="del($event,i)" [attr.data-index]="i">
-        <!-- <img src= {{trashImage}}> -->
-        <i class="material-icons">delete</i>
-      </div>
-
-    </div>
+        <div class="trashArea delete" (click)="del($event,i)" [attr.data-index]="i">
+          <!-- <img src= {{trashImage}}> -->
+          <i class="material-icons">delete</i>
+        </div>
+    
+     </div>
   </section>
+</section>
 
   <footer>
-    <a href="">Load More...</a>
+    <span (click)="loadMore($event)" class="load">Load More</span>
   </footer>
-</div>
+  </div>

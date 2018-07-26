@@ -1,11 +1,16 @@
 collapse = function () {
   console.log("etete");
   var x = document.getElementsByClassName("itemMain");
+  var spanFoot=document.getElementsByClassName('load');
+  console.log(spanFoot[0]);
   console.log(x);
   if (x[0].style.display === "none") {
     x[0].style.display = "inline-block";
+    spanFoot[0].style.display="inline-block";
   } else {
     x[0].style.display = "none";
+    spanFoot[0].style.display="none";
+    
   }
 }
 
@@ -73,22 +78,24 @@ openModalToView = function (event, info) {
 
 
 
-// Using only HTML, create a template for the structure depicted in the mock-ups.
-// Using CSS, style your template so it matches the mock-ups as closely as possible.
-// Create an Angular list component from your code and import it to the project.
-// Display system's current date in the format shown in the mock-ups.
-// Display the total number of items in the list header.
+// Using only HTML, create a template for the structure depicted in the mock-ups. -DONE
+// Using CSS, style your template so it matches the mock-ups as closely as possible. -DONE
+// Create an Angular list component from your code and import it to the project. -DONE
+// Display system's current date in the format shown in the mock-ups. -DONE
+// Display the total number of items in the list header. -DONE
 // Display the total number of new items as red badge in the list header.--TODO
-// Display default image placeholder if item is missing icon.--TODO
+// Display default image placeholder if item is missing icon.--DONE
 
-// Add collapse functionality to the list component.
-// Configure the component so it loads hardcoded data object.
-// Create functions for Add and Delete buttons.--TODO
-// Truncate long texts in list items.
+// Add collapse functionality to the list component. -DONE
+// Configure the component so it loads hardcoded data object. -DONE
+// Create functions for Add and Delete buttons. -DONE
+// Truncate long texts in list items. -DONE
+
 // Component behavior:
 // New items are indicated by blue border.--TODO
-// List components can be collapsed by clicking the caret icon.
-// The entire list item including the icon is clickable to open the record.
+// List components can be collapsed by clicking the caret icon. -DONE
+// The entire list item including the icon is clickable to open the record. -DONE---not sure if instructions wanted a route but for simplicity implemented simple modal
 // The component must be responsive.--TODO
 // List item icons are hidden in mobile view.--TODO
+
 // Note: Do NOT use any CSS frameworks or Angular Libraries.
