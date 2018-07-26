@@ -12,8 +12,8 @@ declare var showNewView: any;
 })
 export class ListComponent implements OnInit {
   itemCount: number;
-  newItem:number=0;
-  oldItem:number;
+  newItem: number = 0;
+  oldItem: number;
   plusImage: any = "assets/icons8-plus-math-30.png";
   caretImage: any = "assets/icons8-down-button-50.png";
   trashImage: any = "assets/icons8-trash-can-24.png";
@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
   iMain: string;
   today = new Date().toJSON().slice(0, 10);
   newData; //when user adds own data
-
+  newObj = [];
   infoObj = [
     {
       infoImg: "assets/Large_breaking_wave.jpg",
@@ -61,16 +61,15 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.itemCount = this.infoObj.length; //itemcount gets number of list items in object above and then this is passed to the view
     console.log(this.today);
-    //  app2;
-    this.show=3;
-    // this.oldItem=this.infoObj.length;
+    this.show = 3;
+    this.oldItem=this.infoObj.length;
   }
 
   myEvent(event) {
     //call the collapse function to collapse the list
     // var x = document.getElementsByClassName("itemSection");
     collapse();
-    this.show=3;
+    this.show = 3;
     // console.log(event);
   }
 
@@ -92,7 +91,7 @@ export class ListComponent implements OnInit {
       iMain: this.iMain
     });
     this.newItem++;
-    showNewView(this.newItem);
+    showNewView(this.newItem,this.oldItem);
     this.itemCount = this.infoObj.length;
   }
 
@@ -105,10 +104,11 @@ export class ListComponent implements OnInit {
     openModalToAdd();
   }
 
-  loadMore(event){//shows only 3 at a time, if more is added, have to click load more to show more
+  loadMore(event) {
+    //shows only 3 at a time, if more is added, have to click load more to show more
     event.stopPropagation();
-    if(this.show==3){
-      this.show=this.infoObj.length;
+    if (this.show == 3) {
+      this.show = this.infoObj.length;
     }
   }
 }

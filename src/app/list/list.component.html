@@ -21,23 +21,28 @@
   <div id="viewModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
+        <span class="close">&times;</span>
       <div class="itemImg1"></div>
       <p class="nameData1"></p>
       <p class="subData1"></p>
       <p class="mainData1"></p>
       <p class="currDate1"></p>
-      <span class="close">&times;</span>
+      
     </div>
   </div>
 
   <!-- add new data modal -->
   <div id="addModal" class="modal">
-    <form (submit)="addToList($event)">
+    <form (submit)="addToList($event)" class="modal-content">
+      <label for="image">Image Url</label>
       <input type="text" [(ngModel)]="infoImg" name="image">
+      <label for="Name">Name:</label>
       <input type="text" [(ngModel)]="iName" name="Name">
+      <label for="Info">Basic Info:</label>
       <input type="text" [(ngModel)]="iInfo" name="Info">
+      <label for="Main">Main Info:</label>
       <input type="text" [(ngModel)]="iMain" name="Main">
-      <button type="submit">Add contact</button>
+      <button type="submit">Add to list</button>
     </form>
     <span class="closeAdd">&times;</span>
   </div>

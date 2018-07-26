@@ -40,6 +40,7 @@ openModalToView = function (event, info) {
   iName = document.getElementsByClassName('nameData1');
   iInfo = document.getElementsByClassName('mainData1');
   iMain = document.getElementsByClassName('currDate1');
+  console.log(iImg[0])
 
   console.log(iImg);
   for (ele1 in info) {
@@ -60,6 +61,9 @@ openModalToView = function (event, info) {
         iMain[0].innerHTML = info[ele1];
         break;
     }
+    iImg[0].getElementsByTagName('img')[0].style.maxWidth = '100%';
+    iImg[0].getElementsByTagName('img')[0].style.display = 'block';
+    iImg[0].getElementsByTagName('img')[0].style.height = 'auto';
   }
 
   //get span element then when user clicks x close the modal
@@ -76,14 +80,19 @@ openModalToView = function (event, info) {
 }
 
 
-showNewView = function (elValue) {
+showNewView = function (elValue,elOld) {
   var newItemSpan = document.getElementById('newItem');
-console.log(newItemSpan);
-console.log(elValue);
+  var styleItem=document.getElementById('newItem');
+  console.log(newItemSpan);
+  console.log(elValue);
   if (elValue > 0) {
     newItemSpan.innerHTML = elValue;
+    var findidx=(elValue+elOld)-1;
+    console.log(findidx);
+    styleItem.style.backgroundColor="red";
+    styleItem.style.borderRadius="80%";
+    styleItem.style.borderRadius="80%";
   }
-
 }
 
 
