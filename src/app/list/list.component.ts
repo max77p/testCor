@@ -1,16 +1,14 @@
 import { Component, OnInit } from "@angular/core";
+import { identifierModuleUrl } from "../../../node_modules/@angular/compiler";
 declare var collapse: any;
-declare var openItem: any;
+declare var openModalToView: any;
+declare var openModalToAdd: any;
 
 @Component({
   selector: "app-list",
   templateUrl: "./list.component.html",
   styleUrls: ["./list.component.css"]
 })
-// class Hero {
-//   name: string;
-//   power: string;
-// }
 export class ListComponent implements OnInit {
   itemCount: number;
   plusImage: any = "assets/icons8-plus-math-30.png";
@@ -22,6 +20,7 @@ export class ListComponent implements OnInit {
   iInfo: string;
   iMain: string;
   today = new Date().toJSON().slice(0, 10);
+  newData; //when user adds own data
 
   infoObj = [
     {
@@ -47,10 +46,7 @@ export class ListComponent implements OnInit {
     }
   ];
 
-  // newHero: Hero;
-  constructor() {
-    // this.newHero = new Hero();
-  }
+  constructor() {}
 
   ngOnInit() {
     this.itemCount = this.infoObj.length; //itemcount gets number of list items in object above and then this is passed to the view
@@ -73,18 +69,24 @@ export class ListComponent implements OnInit {
     this.itemCount = this.infoObj.length; //updates number of list items after delete
   }
 
-  // addHero() {
-  //   if (this.newHero) {
-  //     var entry = {
-  //       'name': this.newHero.name,
-  //       'power': this.newHero.power
-  //     };
-  //     // this.infoObj.push(entry);
-  //   }
-  // }
+  addToList(event) {
+    event.stopPropagation();
+    console.log(this.infoImg);
+    this.infoObj.push({
+      infoImg: this.infoImg,
+      iName: this.iName,
+      iInfo: this.iInfo,
+      iMain: this.iMain
+    });
+    this.itemCount = this.infoObj.length;
+  }
 
-  openModal(event, i) {
+  openModalView(event, i) {
     //opens modal when user clicks anywhere on the list item/section
-    openItem(event, this.infoObj[i]);
+    openModalToView(event, this.infoObj[i]);
+  }
+  openAddModal(event) {
+    //opens modal when user clicks on plus sign
+    openModalToAdd();
   }
 }

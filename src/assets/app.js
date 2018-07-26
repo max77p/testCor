@@ -9,13 +9,25 @@ collapse = function () {
   }
 }
 
-addItem=function(){
-  
+openModalToAdd=function(){
+  var modal = document.getElementById('addModal');
+  modal.style.display = "block";
+
+  //get span element then when user clicks x close the modal
+  var span = document.getElementsByClassName("closeAdd")[0];
+  span.onclick = function (e) {
+    modal.style.display = "none";
+  }
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 }
 
-openItem = function (event, info) {
+openModalToView = function (event, info) {
   // Get the modal
-  var modal = document.getElementById('myModal');
+  var modal = document.getElementById('viewModal');
   modal.style.display = "block";
 
   var iImg, iName, iInfo, iMain;
