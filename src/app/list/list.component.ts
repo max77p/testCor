@@ -5,6 +5,10 @@ declare var collapse: any;
 declare var openModalToView: any;
 declare var openModalToAdd: any;
 declare var showNewView: any;
+declare var checkNew:any;
+declare var showOnlyThree:any;
+declare var showAfterDel:any;
+declare var showAll:any;
 
 @Component({
   selector: "app-list",
@@ -22,7 +26,7 @@ export class ListComponent implements OnInit {
   iName: string;
   iInfo: string;
   iMain: string;
-  key:string;
+  ikey:any;
   today = new Date().toJSON().slice(0, 10);
 
   infoObj = [
@@ -65,14 +69,15 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.itemCount = this.infoObj.length; //itemcount gets number of list items in object above and then this is passed to the view
-    this.show = 3; //on initialization pass this to the ngIf directive to show only 3 list items
+    this.show = 2; //on initialization pass this to the showThree function
     this.origLength=this.infoObj.length-1;//pass original index
+    showOnlyThree(this.show);
   }
 
   myEvent(event) {
     //this function runs the collapse function when the caret is clicked
     collapse(event);
-    this.show = 3;
+    // showOnlyThree(this.show);
   }
 
   del(event, i) {
@@ -81,6 +86,7 @@ export class ListComponent implements OnInit {
     // console.log(event);
     this.infoObj.splice(i, 1);
     // console.log(i);
+    showAfterDel(this.show);
     this.itemCount = this.infoObj.length; //updates number of list items after delete
   }
 
@@ -94,11 +100,11 @@ export class ListComponent implements OnInit {
       iInfo: this.iInfo,
       iMain: this.iMain
     });
-
+    checkNew();
     this.newItem++; //keeps count of new items
     this.itemCount = this.infoObj.length;
     showNewView(this.newItem); //passes newitem count to function in app.js
-
+    
   }
 
   openModalView(event, i) {
@@ -113,8 +119,9 @@ export class ListComponent implements OnInit {
   loadMore(event) {
     //shows only 3 at a time, if more is added, have to click load more to show more
     event.stopPropagation();
-    if (this.show == 3) {
-      this.show = this.infoObj.length;
-    }
+    // if (this.show == 2) {
+      this.show = 2;
+      showAll(this.show);
+    // 
   }
 }

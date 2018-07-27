@@ -50,9 +50,9 @@
   </div>
 
   <section class="itemMain">
-    <section class="itemInnerMain" *ngFor="let ele of infoObj; index as i">
+    <section class="itemInnerMain" *ngFor="let ele of infoObj; index as i;">
 <!--ngClass directive to apply blue bar to new items-->
-        <div class="itemSection" (click)="openModalView($event,i)" [attr.data-index]="i" *ngIf="i<show" [ngClass]="{'yesNew': i>origLength}" >
+        <div class="itemSection" (click)="openModalView($event,i)" [attr.data-index]="i">
           <div class="itemImg">
             <img src= {{ele.infoImg}} onerror="this.src='../assets/dummy.png'">
           </div>
@@ -80,6 +80,6 @@
   </section>
 
   <footer>
-    <span (click)="loadMore($event)" class="load">Load More</span>
+    <span (click)="loadMore($event)" class="load" id="loadMore">Load More</span>
   </footer>
 </div>

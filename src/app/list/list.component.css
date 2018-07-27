@@ -235,11 +235,3 @@ footer {
     padding-left:2em;
   }
 }
-
-.yesNew{
-  border-left-color:blue;
-  border-left-width:.2em;
-}
-.notNew{
-  border-left-color:inherit;
-}

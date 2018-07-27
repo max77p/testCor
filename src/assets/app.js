@@ -65,7 +65,7 @@ openModalToView = function (event, info) {
     iImg[0].getElementsByTagName('img')[0].style.maxWidth = '100%';
     iImg[0].getElementsByTagName('img')[0].style.display = 'block';
     iImg[0].getElementsByTagName('img')[0].style.height = 'auto';
-    iImg[0].getElementsByTagName('img')[0].style.width= '20em';
+    iImg[0].getElementsByTagName('img')[0].style.width = '20em';
   }
 
   //get span element then when user clicks x close the modal
@@ -81,24 +81,80 @@ openModalToView = function (event, info) {
   }
 }
 
+//show only three on initialization and when caret is clicked
+showOnlyThree = function (showNum) {
+  window.addEventListener('DOMContentLoaded', function (element) {
+    var check = document.getElementsByClassName('itemSection');
+    for (var i = 0; i < check.length; i++) {
+      if (i > showNum) {
+        check[i].style.display = "none";
+      }
+    }
+  });
+}
+
+//show after each delete
+showAfterDel = function (showNum) {
+  window.addEventListener('DOMNodeRemoved', function (element) {
+    var check = document.getElementsByClassName('itemSection');
+    for (var i = 0; i < check.length; i++) {
+      if (i <= 3) {
+        check[i].style.display = "";
+      }
+    }
+  });
+}
+var action=true;
+//showAll on loadmore
+showAll = function (showNum) {
+  var check = document.getElementsByClassName('itemSection');
+  document.getElementById('loadMore').addEventListener("click", function (e) {
+    // action = true;
+    if (action) {
+      for (var i = 0; i < check.length; i++) {
+        check[i].style.display = "";
+      }
+      action=false;
+    }
+    else {
+      for (var i = 0; i < check.length; i++) {
+        if (i > showNum) {
+          check[i].style.display = "none";
+        }
+      }
+      action=true;
+    }
+    // console.log(e);
+  });
+}
 
 showNewView = function (elValue) {
   var newItemSpan = document.getElementById('newItem');
-  var styleItem=document.getElementById('newItem');
-  var getval=document.getElementsByTagName('input');
+  var styleItem = document.getElementById('newItem');
+  var getval = document.getElementsByTagName('input');
   //clear inputvalue after submit
-  for(var i=0;i<getval.length;i++){
-    getval[i].value="";
+  for (var i = 0; i < getval.length; i++) {
+    getval[i].value = "";
   }
   if (elValue > 0) {
     newItemSpan.innerHTML = elValue;
-    styleItem.style.backgroundColor="red";
-    styleItem.style.color="white";
-    styleItem.style.borderRadius="80%";
-    styleItem.style.padding="0 .3em 0 .3em";
+    styleItem.style.backgroundColor = "red";
+    styleItem.style.color = "white";
+    styleItem.style.borderRadius = "80%";
+    styleItem.style.padding = "0 .3em 0 .3em";
   }
-
 }
+
+//highlight leftborder of new items
+checkNew = function () {
+  window.addEventListener('DOMNodeInserted', function (element) {
+
+    // console.log(element.target);
+    // console.log(element.target.children[0]);
+    element.target.children[0].style.borderLeftColor="blue";
+    element.target.children[0].style.borderLeftWidth=".2em";
+  });
+};
 
 
 
