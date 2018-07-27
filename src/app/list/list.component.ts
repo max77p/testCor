@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { identifierModuleUrl } from "../../../node_modules/@angular/compiler";
+
 declare var collapse: any;
 declare var openModalToView: any;
 declare var openModalToAdd: any;
@@ -13,7 +14,6 @@ declare var showNewView: any;
 export class ListComponent implements OnInit {
   itemCount: number;
   newItem: number = 0;
-  oldItem: number;
   plusImage: any = "assets/icons8-plus-math-30.png";
   caretImage: any = "assets/icons8-down-button-50.png";
   trashImage: any = "assets/icons8-trash-can-24.png";
@@ -22,9 +22,9 @@ export class ListComponent implements OnInit {
   iName: string;
   iInfo: string;
   iMain: string;
+  key:string;
   today = new Date().toJSON().slice(0, 10);
-  newData; //when user adds own data
-  newObj = [];
+
   infoObj = [
     {
       infoImg: "assets/Large_breaking_wave.jpg",
@@ -55,44 +55,50 @@ export class ListComponent implements OnInit {
         "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga."
     }
   ];
+  origLength=0;
+  newItemArr=[];
+  getcurr:number;
+  getnext:number;
+  lookup:number;
 
   constructor() {}
 
   ngOnInit() {
     this.itemCount = this.infoObj.length; //itemcount gets number of list items in object above and then this is passed to the view
-    console.log(this.today);
-    this.show = 3;
-    this.oldItem=this.infoObj.length;
+    this.show = 3; //on initialization pass this to the ngIf directive to show only 3 list items
+    this.origLength=this.infoObj.length-1;//pass original index
   }
 
   myEvent(event) {
-    //call the collapse function to collapse the list
-    // var x = document.getElementsByClassName("itemSection");
-    collapse();
+    //this function runs the collapse function when the caret is clicked
+    collapse(event);
     this.show = 3;
-    // console.log(event);
   }
 
   del(event, i) {
     //delete a list if user clicks the trash icon
     event.stopPropagation();
-    console.log(event);
+    // console.log(event);
     this.infoObj.splice(i, 1);
+    // console.log(i);
     this.itemCount = this.infoObj.length; //updates number of list items after delete
   }
 
   addToList(event) {
+    //this function runs when plus(add new item)sign is clicked
     event.stopPropagation();
-    console.log(this.infoImg);
+    //saves added items to main list here
     this.infoObj.push({
       infoImg: this.infoImg,
       iName: this.iName,
       iInfo: this.iInfo,
       iMain: this.iMain
     });
-    this.newItem++;
-    showNewView(this.newItem,this.oldItem);
+
+    this.newItem++; //keeps count of new items
     this.itemCount = this.infoObj.length;
+    showNewView(this.newItem); //passes newitem count to function in app.js
+
   }
 
   openModalView(event, i) {

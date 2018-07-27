@@ -1,23 +1,20 @@
 .grid-container {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   margin: 0 auto;
-  /* grid-gap: 10px; */
-  /* background-color: #2196F3; */
-  /* padding: 10px; */
   width: 100%;
   max-width: 60em;
   border: 1px solid #e0e0e0;
 }
-
-
 
 .headingSection {
   background-color: #ebebeb;
   display: flex;
   align-content: center;
   justify-content: space-between;
-  padding-left: 1em;
+  padding: .5em 0 .5em 0;
+  display: grid;
+  grid-template-columns: 80% 20%;
 }
 
 p {
@@ -25,52 +22,43 @@ p {
 }
 
 .left {
-  /* border:1px solid black; */
-  /* float:left; */
-  padding-left: 1em;
-  padding-top: 1em;
-  width: 50%;
+  padding-left: 2em;
 }
 
+.left p:nth-child(1) {
+  display: inline-block;
+  margin-right: .2em;
+  color:#656565;
+}
+.left p:nth-child(3){
+color:#9b9b9b;
+}
 .right {
-  /* float: right; */
-  /* border: 1px blue solid; */
-  /* vertical-align: middle; */
-  padding-top: 1em;
-  padding-right: 1em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2em;
 }
 
 .right div {
   display: inline-block;
-  padding: 1em;
 }
 
 .plus i {
-  /* font-size: 1.5em; */
   cursor: default;
-  /* height:100%; */
   border-radius: 80%;
 }
 
 .plus {
-  /* border: 1px solid black; */
 }
 
 .caret {
-  /* background-color:blue; */
-  /* border-radius:80%; */
-  /* border: 1px solid red; */
-  /* padding:1em; */
   cursor: default;
-  /* padding:.2em; */
-  /* height:100%; */
 }
 
 .caret i {
   /* background-color:#d7d7d7; */
   border-radius: 80%;
-  /* font-size:3em;  */
-  /* height:100%; */
 }
 
 .caret i:hover,
@@ -86,37 +74,33 @@ p {
 
 .itemSection {
   border: 1px solid #e7e7e7;
-  /* height: 5em;*/
-  padding: .5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
   display: grid;
-  grid-template-columns: 10% 60% 30%;
+  grid-template-columns: 10% 70% 20%;
 }
 
 .itemImg img {
   border-radius: 60%;
   width: 4em;
   height: 4em;
+  object-fit: cover;
 }
 
 .itemImg {
-  /* border: 1px solid black; */
-  margin: auto 0 auto 2px;
-  padding-left: 1em;
-  /* width:100%; */
-}
-
-.itemData {
-  /* border: 1px solid red; */
-  padding-left: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
 }
 
 .trashArea {
-  /* border:1px solid green; */
-  margin: auto 2px auto auto;
   background-color: white;
-  border-radius: 80%;
-  padding: 1.2em;
   cursor: default;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2em;
+  align-items: center;
 }
 
 .trashArea i {
@@ -126,10 +110,11 @@ p {
 }
 
 .itemData p {
-  width: 25em;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-all;
 }
 
 .itemData p:nth-child(1) {
@@ -143,22 +128,23 @@ p:nth-child(3) {
 }
 
 .mainData {
-  color: #cdcdcd;
+  color: #9b9b9b;
 }
 
 .currDate {
-  /* border:1px solid blue; */
   display: flex;
   align-items: center;
-  padding-top: .5em;
+  padding-top: .3em;
 }
 
 .currDate i {
   color: #949494;
+  padding-right:.2em;
 }
 
 .currDate span {
   color: #a2a2a2;
+  font-size:14px;
 }
 
 footer {
@@ -170,7 +156,6 @@ footer {
 }
 
 /* The Modal (background) */
-
 .modal {
   display: none;
   position: fixed;
@@ -181,12 +166,10 @@ footer {
   width: 100%;
   height: 100%;
   overflow: auto;
-  /* background-color: rgb(0, 0, 0); */
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Modal Content */
-
 .modal-content {
   border: 1px solid black;
   background-color: #fefefe;
@@ -194,18 +177,17 @@ footer {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
- height:15em;
+  max-height: 15em;
+  height:100%;
   position: relative;
-  clear: left;
+  overflow:auto;
 }
 
 .modal-content p {
   color: green;
-  width: 50%;
-  float: right;
 }
 
-.modal-content input{
+.modal-content input {
   display: block;
   width: 100%;
   margin-bottom: 1em;
@@ -215,11 +197,11 @@ footer {
 .itemImg1 {
   float: left;
   margin: 0 auto;
-  width: 20em;
-  height: 100%;
+  padding-right:1em;
 }
 
-.close {
+
+.close,.closeAdd {
   color: #aaaaaa;
   position: absolute;
   top: 0;
@@ -234,4 +216,30 @@ footer {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.load{
+  color:#6a96c5;
+  text-decoration: underline;
+  cursor:default;
+}
+
+/*media query to hide image thumbnail when user is viewing at 942px or less*/
+@media only screen and (max-width: 942px) { 
+  .itemImg {
+    display:none;
+  }
+  .itemSection {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding-left:2em;
+  }
+}
+
+.yesNew{
+  border-left-color:blue;
+  border-left-width:.2em;
+}
+.notNew{
+  border-left-color:inherit;
 }
