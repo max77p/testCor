@@ -101,6 +101,7 @@ export class ListComponent implements OnInit {
       iMain: this.iMain
     });
     checkNew();
+    // showOnlyThree(this.show);
     this.newItem++; //keeps count of new items
     this.itemCount = this.infoObj.length;
     showNewView(this.newItem); //passes newitem count to function in app.js

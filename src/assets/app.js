@@ -148,11 +148,16 @@ showNewView = function (elValue) {
 //highlight leftborder of new items
 checkNew = function () {
   window.addEventListener('DOMNodeInserted', function (element) {
-
     // console.log(element.target);
     // console.log(element.target.children[0]);
     element.target.children[0].style.borderLeftColor="blue";
     element.target.children[0].style.borderLeftWidth=".2em";
+    var check = document.getElementsByClassName('itemSection');
+    for (var i = 0; i < check.length; i++) {
+      if (i > 3) {
+        check[i].style.display = "none";
+      }
+    }
   });
 };
 
