@@ -108,8 +108,6 @@ var action=true;
 //showAll on loadmore
 showAll = function (showNum) {
   var check = document.getElementsByClassName('itemSection');
-  document.getElementById('loadMore').addEventListener("click", function (e) {
-    // action = true;
     if (action) {
       for (var i = 0; i < check.length; i++) {
         check[i].style.display = "";
@@ -124,8 +122,6 @@ showAll = function (showNum) {
       }
       action=true;
     }
-    // console.log(e);
-  });
 }
 
 showNewView = function (elValue) {
@@ -142,16 +138,16 @@ showNewView = function (elValue) {
     styleItem.style.color = "white";
     styleItem.style.borderRadius = "80%";
     styleItem.style.padding = "0 .3em 0 .3em";
+    styleItem.style.fontSize="15px";
   }
 }
 
 //highlight leftborder of new items
 checkNew = function () {
   window.addEventListener('DOMNodeInserted', function (element) {
-    // console.log(element.target);
-    // console.log(element.target.children[0]);
-    element.target.children[0].style.borderLeftColor="blue";
-    element.target.children[0].style.borderLeftWidth=".2em";
+    console.log(element);
+    element.target.children[0].style.borderLeftColor="#3071b6";
+    element.target.children[0].style.borderLeftWidth=".3em";
     var check = document.getElementsByClassName('itemSection');
     for (var i = 0; i < check.length; i++) {
       if (i > 3) {

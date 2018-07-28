@@ -24,10 +24,12 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <div class="itemImg1"></div>
+      <div class="letters">
       <p class="nameData1"></p>
       <p class="subData1"></p>
       <p class="mainData1"></p>
       <p class="currDate1"></p>
+      </div>
 
     </div>
   </div>
@@ -54,7 +56,7 @@
 <!--ngClass directive to apply blue bar to new items-->
         <div class="itemSection" (click)="openModalView($event,i)" [attr.data-index]="i">
           <div class="itemImg">
-            <img src= {{ele.infoImg}} onerror="this.src='../assets/dummy.png'">
+            <img src= {{ele.infoImg}} onerror="this.src='../assets/dummy1.png'">
           </div>
           <div class="itemData">
 
@@ -72,7 +74,7 @@
 
           <div class="trashArea delete" (click)="del($event,i)" [attr.data-index]="i">
             <!-- <img src= {{trashImage}}> -->
-            <i class="material-icons">delete</i>
+            <div class="deleteIcon"><i class="material-icons">delete</i></div>
           </div>
         </div>
   

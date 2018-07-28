@@ -100,6 +100,7 @@ export class ListComponent implements OnInit {
       iInfo: this.iInfo,
       iMain: this.iMain
     });
+    //function to higlight left border blue when new item is added for new items
     checkNew();
     // showOnlyThree(this.show);
     this.newItem++; //keeps count of new items
@@ -120,9 +121,7 @@ export class ListComponent implements OnInit {
   loadMore(event) {
     //shows only 3 at a time, if more is added, have to click load more to show more
     event.stopPropagation();
-    // if (this.show == 2) {
       this.show = 2;
       showAll(this.show);
-    // 
   }
 }
