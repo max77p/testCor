@@ -1,14 +1,14 @@
 # testCority
 Name:Shan
 
-Update: Made the following style changes
+Update: Made the following style changes:
 - updated font style
 - removed duplicate click event (when load more was clicked it needed a double click)
 - updated image to match the color scheme more
 - updated padding on images and icon
 - updated styling on text inside modal
 
-
+Challenge items:
 - Using only HTML, create a template for the structure depicted in the mock-ups. --DONE
 - Using CSS, style your template so it matches the mock-ups as closely as possible. --DONE
 - Create an Angular list component from your code and import it to the project. --DONE
